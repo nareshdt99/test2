@@ -1,0 +1,23 @@
+- name: PLAY1
+  hosts: app
+  tasks:
+    -name: copy-file
+     copy:
+      src: /home/devops/ansible.cfg
+      dest: /tmp
+    -name: create-file
+     file:
+        path: /tmp/today
+        state: directory
+- name: PLAY2
+  hosts: db
+  tasks:
+    -name: task1
+     copy:
+      src: /home/devops/myinv
+      dest: /tmp
+    -name: create-file2
+     file: 
+      path: /tmp/tomorrow
+      state: directory
+   

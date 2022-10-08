@@ -1,0 +1,10 @@
+kind: 
+apiVersion: v1
+metadata:
+    name:
+    namespace:
+spec:
+  - containers:
+         name:
+         image:
+         

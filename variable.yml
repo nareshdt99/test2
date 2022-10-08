@@ -1,0 +1,16 @@
+- name: variables
+  hosts: app
+  become: yes
+  tasks:
+    - name: install vim on ubuntu
+      when: ansible_distribution == "Ubuntu"
+      apt:
+        name: vim
+        state: "{{actionn}}"
+        update_cache: yes
+    - name: install vim on Amazon
+      when: ansible_distribution == "Amazon"
+      yum:
+        name: vim
+        state: "{{actionn}}"
+        update_cache: yes
