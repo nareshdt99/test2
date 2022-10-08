@@ -5,6 +5,6 @@ metadata:
     namespace:
 spec:
   - containers:
-         name:
-         image:
+         name: tomcat
+         image: tomcat
          
