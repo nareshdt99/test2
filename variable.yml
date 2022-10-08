@@ -13,4 +13,4 @@
       yum:
         name: vim
         state: "{{actionn}}"
-        update_cache: yes
+        update_cache: no
