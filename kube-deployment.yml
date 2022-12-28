@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubeserve
+  labels:
+    app: kubeserve
+spec:
+  replicas: 10
+  minReadySeconds: 45 # wait for 10 sec before pod is ready going to next
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1  # take down 1 pod at a time
+      maxSurge: 2        # bring one at a time
+  selector:
+    matchLabels:
+      app: kubeserve
+  template:
+    metadata:
+      name: kubeserve
+      labels:
+        app: kubeserve
+    spec:
+      containers:
+      - image: nareshdt99/abctechnologies-1.0
+        name: app
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+   name: kubeserve-svc
+spec:
+  type: NodePort
+  selector:
+    app: kubeserve
+  ports:
+    - port: 8080
+      targetPort: 8080
